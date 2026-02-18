@@ -66,11 +66,128 @@ console.log(nombreAMostrar); // "Invitado"
 
 
 
+// Formula para escribir TERNARIO
+
+condición ? 
+valor_si_true : 
+valor_si_false ; 
+
+
+/*Maneras de escribir TERNARIOS
+
+En una asignación   */
+let resultado = condicion ? A : B;
+
+// En un return
+function esMayor(edad) {
+  return edad >= 18 ? true : false;
+}
+
+//Directamente en un console.log
+console.log(edad >= 18 ? "Puede pasar" : "No puede pasar");
+
+//Dentro de template strings
+let edad = 16;
+let mensaje = `El usuario es ${edad >= 18 ? "mayor" : "menor"} de edad`;
+
+//Ternario anidado
+let nota = 85;
+
+let resultado =
+  nota >= 90 ? "Excelente" :
+  nota >= 70 ? "Aprobado" :
+  nota >= 50 ? "Regular" :
+  "Reprobado";
+
+  //Con operadores lógicos combinados
+  let acceso = usuarioActivo && esAdmin ? "Acceso total" : "Acceso limitado";
+
+  //Dentro de objetos
+  let usuario = {
+  nombre: "Ana",
+  estado: edad >= 18 ? "Adulto" : "Menor"
+};
+
+//Dentro de JSX (React)
+{isLoggedIn ? <Dashboard /> : <Login />}
 
 
 
+/*OPERADOR NULLISH
+?? Se llama Nullish Coalescing Operator y sirve para asignar
+ un valor por defecto solo cuando el valor es null o undefined.
+*/
+valor ?? valorPorDefecto;
+
+//ejemplo
+let nombre = null;
+
+let resultado = nombre ?? "Invitado";
+
+console.log(resultado); // "Invitado"
 
 
+/*Diferencia con ||
+El operador || considera falsy estos valores:
+
+false
+0
+""
+null
+undefined
+NaN
+
+En cambio, ?? solo reemplaza si es null o undefined.   */
+
+//ejemplo comparativo
+let numero = 0;
+
+console.log(numero || 10); // 10 ❌ (porque 0 es falsy)
+console.log(numero ?? 10); // 0 ✅ (porque no es null ni undefined)
 
 
+/*Truthy
+Truthy es cualquier valor en JavaScript que, al convertirse a booleano, se evalúa como true.
+
+Ejemplos de valores truthy:
+
+"Hola"
+"0"
+[]
+{}
+42
+-1
+true
+"false"
+Infinity
+*/
+
+if ("Hola") {
+  console.log("Esto se ejecuta");
+}   //Se ejecuta porque "Hola" es truthy.
+
+
+/* Falsy
+Falsy es cualquier valor en JavaScript que, al evaluarse en un contexto booleano se convierte en false. JavaScript hace esta conversión automáticamente.
+
+Los valores falsy 
+Solo existen 8 valores falsy en JavaScript:
+
+false
+0
+-0
+0n
+""
+null
+undefined
+NaN                                   */
+
+
+let nombre = "";
+
+if (nombre) {
+  console.log("Tiene nombre");
+} else {
+  console.log("Está vacío");
+}  //"" (string vacío) es falsy.
 

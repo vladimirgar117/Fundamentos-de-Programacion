@@ -40,7 +40,7 @@ let numeroGigante = 9007199254740991;
 //Symbol: Un valor único e inmutable que se utiliza a menudo como clave para propiedades de objetos.
 
 // Symbol: Identificadores únicos
-let id Unico = Symbol("id");
+let idUnico = Symbol("id");
 
 
 //Tipos de Objetos:
@@ -67,3 +67,121 @@ const despedir = function() {
     return "Adiós";
 };
 
+
+
+/*   
+ Mas tipos de datos no primitivos:
+
+Además de Object, Array y Function, JavaScript incluye varios objetos especiales incorporados 
+que amplían las capacidades del lenguaje.
+
+
+
+Date:
+Permite trabajar con fechas y horas.
+
+Sirve para:
+
+Obtener fecha actual
+Calcular diferencias de tiempo
+Formatear fechas    */
+
+let ahora = new Date();
+console.log(ahora.getFullYear()); //muestra el año actual
+
+/*
+Math
+Objeto estático para operaciones matemáticas.
+
+Incluye:
+
+Constantes (PI)
+Métodos (random(), round(), sqrt(), etc.)
+No se instancia con new    */
+
+console.log(Math.PI); // se muestra el valor de PI (3.141592653589793)
+
+
+/*
+RegExp
+Permite trabajar con expresiones regulares.
+
+Sirve para:
+
+Validaciones
+Búsqueda de texto
+Reemplazos avanzados    */
+
+let patron = /hola/i;
+console.log(patron.test("Hola mundo")); // true
+
+
+/*
+Map
+
+Colección de pares clave → valor, pero más flexible que un objeto.
+
+Ventajas:
+Permite claves de cualquier tipo
+
+Mantiene orden de inserción    */
+
+let mapa = new Map();
+mapa.set("nombre", "Ana");
+
+console.log(mapa.get("nombre"));
+
+
+/*
+Set
+Colección de valores únicos.
+
+Ideal para:
+
+Eliminar duplicados
+Verificar existencia rápida   */
+
+let numeros = new Set([1, 2, 2, 3]);
+console.log(numeros); // {1, 2, 3}
+
+
+/* WeakMap
+Similar a Map, pero:
+
+Solo acepta objetos como claves
+Permite recolección de basura automática */
+
+let weakMap = new WeakMap();
+let obj = {};
+weakMap.set(obj, "dato");
+
+/*
+WeakSet
+Similar a Set, pero:
+
+Solo almacena objetos
+No es iterable */
+
+let weakSet = new WeakSet();
+let obj = {};
+weakSet.add(obj);
+
+/*
+Promise
+
+Representa un valor que estará disponible en el futuro (asincronía).
+
+*/
+
+let promesa = new Promise((resolve, reject) => {
+  resolve("Listo");
+});
+
+promesa.then(res => console.log(res));
+
+/*
+Error
+Representa errores en JavaScript.
+*/
+
+throw new Error("Algo salió mal");
