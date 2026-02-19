@@ -142,8 +142,8 @@ En cambio, ?? solo reemplaza si es null o undefined.   */
 //ejemplo comparativo
 let numero = 0;
 
-console.log(numero || 10); // 10 ❌ (porque 0 es falsy)
-console.log(numero ?? 10); // 0 ✅ (porque no es null ni undefined)
+console.log(numero || 10); // 10  (porque 0 es falsy)
+console.log(numero ?? 10); // 0  (porque no es null ni undefined)
 
 
 /*Truthy

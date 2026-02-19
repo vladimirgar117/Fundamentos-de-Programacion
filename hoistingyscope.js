@@ -1,57 +1,152 @@
-/*  El hoisting (o elevación) es un comportamiento  en el que las declaraciones  de variables, funciones y clases 
-  parecen moverse a la parte superior de su ámbito (scope) antes de que se ejecute el código. 
+/* El hoisting (o elevación):
+es el comportamiento por el cual las declaraciones de variables y funciones se “elevan” al
+inicio de su contexto (scope) durante la fase de compilación, antes de que el código se ejecute.
+Solo se elevan las declaraciones, no las asignaciones.
 
 
-  Comportamiento según el tipo de declaración
+Comportamiento según el tipo de declaración:
 
-Variables con var: Se elevan y se inicializan con el valor undefined. Esto permite usar la variable antes de su línea de declaración sin que el programa falle, aunque su valor será "indefinido" hasta que se le asigne uno.
+Hoisting con var
 
-Variables con let y const: También se elevan, pero no se inicializan. Intentar acceder a ellas antes de su declaración resulta en un ReferenceError debido a la "Zona Muerta Temporal" (Temporal Dead Zone).
+Las variables declaradas con var:
+Se elevan.
+Se inicializan automáticamente con undefined.  */
 
-Declaraciones de funciones: Se elevan completamente, incluyendo su cuerpo. Esto permite llamar a una función incluso antes de que aparezca definida en el archivo.
+console.log(x); // undefined
+var x = 5;
 
-Expresiones de funciones: Si una función se asigna a una variable (ej. var miFuncion = function() {}), se comporta como una variable; solo se eleva la declaración de la variable, no la definición de la función.  */
 
+/*
+Hoisting con let y const
 
-// Hoisting con funciones: funciona
-saludar(); 
+También se elevan, pero no se inicializan.
+Si se intentan usar antes de declararlas, se obtiene un error: */
+
+console.log(y); // ReferenceError
+let y = 10;
+
+//Esto ocurre por la Zona Muerta Temporal (TDZ – Temporal Dead Zone)
+//  que es el período entre el inicio del bloque y la declaración.
+
+/*
+Hoisting en funciones
+
+Declaración de función (Function Declaration)
+Se eleva completamente (nombre y cuerpo):  */
+
+saludar();
 
 function saludar() {
   console.log("Hola");
 }
 
-// Hoisting con var: devuelve undefined
-console.log(nombre); 
-var nombre = "Alex";
-
-// Hoisting con let: lanza un Error
-console.log(edad); 
-let edad = 25;
+//Funciona porque la función se eleva completa.
 
 
 
-/*El Scope (o ámbito) es el contexto actual de ejecución que determina la visibilidad y accesibilidad de las variables,
- funciones y objetos en tu código. En términos sencillos, define en qué partes del programa puedes usar una variable específica.
+/*Expresión de función (Function Expression)
+
+No se eleva como función, sino como variable.*/
+
+saludar(); // TypeError
+
+var saludar = function() {
+  console.log("Hola");
+};
+
+//Internamente:
+
+var saludar; // undefined
+saludar();   // undefined()
+
+
+
+
+/*El scope (ámbito):
+es el contexto donde una variable es accesible.
+Define desde dónde se puede usar una variable o función.
  
- Tipos principales de Scope en JavaScript
 
-Scope Global: Es el nivel más externo. Las variables declaradas aquí (fuera de cualquier función o bloque) son accesibles desde cualquier lugar del programa.
+Tipos principales de Scope 
 
-Scope de Función (Local): Las variables declaradas dentro de una función solo pueden ser utilizadas dentro de esa misma función y no son visibles desde el exterior.
 
-Scope de Bloque: Introducido en ES6, se aplica a variables declaradas con let y const dentro de un bloque limitado por llaves {} (como un if o un for). A diferencia de var, estas variables mueren al salir del bloque.
+Scope Global
+Una variable declarada fuera de cualquier función o bloque pertenece al ámbito global. */
 
-Scope de Módulo: En entornos que usan módulos, las declaraciones dentro de un archivo son privadas a ese archivo a menos que se exporten explícitamente. 
+let nombre = "Ana";
+
+function saludar() {
+  console.log(nombre);
+}
+
+saludar(); // "Ana"
+
+//nombre  puede usarse en cualquier parte del programa.
+
+
+/*
+Scope de Función
+Las variables declaradas dentro de una función solo existen dentro de esa función.  */
+
+function saludar() {
+  let mensaje = "Hola";
+  console.log(mensaje);
+}
+
+saludar();
+console.log(mensaje); //  ReferenceError
+
+//mensaje no existe fuera de la función.
+
+
+/*
+Scope de Bloque (Block Scope)
+(let y const), los bloques {} crean un nuevo ámbito. */
+
+if (true) {
+  let edad = 25;
+}
+
+console.log(edad); //  ReferenceError
+
+//let y const respetan el bloque.
+//var NO respeta el bloque:
+if (true) {
+  var ciudad = "Madrid";
+}
+
+console.log(ciudad); //  "Madrid"
+
+
+/*Scope Léxico (Lexical Scope)
+JavaScript usa scope léxico, lo que significa que el ámbito depende de dónde se escribe el código, 
+no de dónde se ejecuta.  */
+
+function externa() {
+  let mensaje = "Hola";
+
+  function interna() {
+    console.log(mensaje);
+  }
+
+  interna();
+}
+
+externa(); // "Hola"
+
+//La función interna puede acceder a mensaje porque fue definida dentro de externa.
+
  
- 
-Conceptos clave relacionados
+/*
+Cadena de Scope (Scope Chain)
 
-Cadena de Scope (Scope Chain): Cuando buscas una variable, JavaScript comienza en el ámbito local actual. Si no la encuentra, salta al ámbito "padre" y continúa subiendo hasta llegar al global.
+Cuando JavaScript busca una variable:
 
-Lexical Scope: Significa que el ámbito se determina por la ubicación física de la declaración en el código fuente durante la escritura, no por dónde se llama a la función.
+Busca en el scope actual
+Luego en el scope padre
+Sigue subiendo hasta el global
+Si no la encuentra → ReferenceError
 
-Shadowing (Sombreado): Ocurre cuando una variable en un ámbito interno tiene el mismo nombre que una en un ámbito externo, ocultando temporalmente la versión externa.
- 
- 
- 
- */
+
+
+*/
