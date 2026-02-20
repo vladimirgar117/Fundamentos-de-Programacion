@@ -19,3 +19,25 @@ class Persona {
 const usuario = new Persona("Alex", 25);
 usuario.saludar(); // "Hola, soy Alex"
 
+
+/*Diferencia de un constructor y un metodo:
+
+
+El constructor es un método especial que 
+
+Se ejecuta automáticamente cuando creas una nueva instancia (objeto) de la clase.
+Sirve para inicializar propiedades.
+Solo puede haber un constructor por clase.
+Se define con la palabra clave constructor.
+
+
+
+Un método es una función definida dentro de la clase que:
+
+Se usa para definir comportamientos del objeto.
+Puede haber muchos métodos en una clase.
+Se ejecuta cuando tú lo llamas, no automáticamente
+
+
+
+*/
