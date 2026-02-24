@@ -1,17 +1,21 @@
 //callback
 //es una funcion que se pasa como argumento a otra funcion para que se ejecute despues.
 
-function saludar(nombre) {
-  console.log("Hola " + nombre);
+
+function saludar(nombre, miCallback) {
+    console.log("Hola, " + nombre);
+    miCallback(); // Aquí "llamamos de vuelta" a la función recibida
 }
 
-function procesarUsuario(callback) {
-  const nombre = "Ana";
-  callback(nombre);
+function despedirse() {
+    console.log("¡Adiós!");
 }
 
-procesarUsuario(saludar);
-
+// Pasamos 'despedirse' como el callback
+saludar("Mateo", despedirse); 
+// Resultado:
+// "Hola, Mateo"
+// "¡Adiós!"
 
 
 /*
@@ -37,6 +41,21 @@ function esperar(ms) {
 esperar(2000)
   .then(mensaje => console.log(mensaje));
 
+
+
+
+  const miPedido = obtenerComida(); // Esto devuelve una Promesa
+
+miPedido
+  .then((comida) => {
+    console.log("¡A comer!: " + comida); // Se ejecuta si sale bien
+  })
+  .catch((error) => {
+    console.error("Hubo un problema: " + error); // Se ejecuta si falla
+  })
+  .finally(() => {
+    console.log("Proceso terminado (limpiar la mesa)"); // Se ejecuta siempre
+  });
 
 
 
