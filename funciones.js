@@ -149,9 +149,13 @@ async function text() {
 
 
 
+
+
+
+
 /*
 Funciones de Cierre (Closures)
-Un closure es una función que "recuerda" el entorno donde fue creada, incluso después de que ese entorno haya desaparecido.
+es una función que "recuerda" el ámbito de su función padre, permitiéndole acceder a variables externas incluso después de que la función padre haya terminado de ejecutarse.
 */
 
 function crearContador() {
@@ -162,6 +166,15 @@ function crearContador() {
   };
 }
 const miContador = crearContador();
+
+
+
+
+
+
+
+
+
 
 /*
 
