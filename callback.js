@@ -1,21 +1,17 @@
 //callback
 //es una funcion que se pasa como argumento a otra funcion para que se ejecute despues.
 
-
-function saludar(nombre, miCallback) {
-    console.log("Hola, " + nombre);
-    miCallback(); // Aquí "llamamos de vuelta" a la función recibida
+function saludar(nombre) {
+  console.log("Hola " + nombre);
 }
 
-function despedirse() {
-    console.log("¡Adiós!");
+function procesarUsuario(callback) {
+  const nombre = "Ana";
+  callback(nombre);
 }
 
-// Pasamos 'despedirse' como el callback
-saludar("Mateo", despedirse); 
-// Resultado:
-// "Hola, Mateo"
-// "¡Adiós!"
+procesarUsuario(saludar);
+
 
 
 /*
@@ -40,24 +36,6 @@ function esperar(ms) {
 
 esperar(2000)
   .then(mensaje => console.log(mensaje));
-
-
-
-
-  const miPedido = obtenerComida(); // Esto devuelve una Promesa
-
-miPedido
-  .then((comida) => {
-    console.log("¡A comer!: " + comida); // Se ejecuta si sale bien
-  })
-  .catch((error) => {
-    console.error("Hubo un problema: " + error); // Se ejecuta si falla
-  })
-  .finally(() => {
-    console.log("Proceso terminado (limpiar la mesa)"); // Se ejecuta siempre
-  });
-
-
 
 
   //async/await
@@ -100,26 +78,59 @@ ejecutar();
 
 
 
+/*
+Manejo de errores 
+permite que el programa no se detenga cuando ocurre un imprevisto como una falla o error.
 
-/* 
-manejo de errores 
-permite gestionar situaciones inesperadas durante la ejecución de un programa, evitando que la aplicación se detenga por completo.
+El bloque try...catch 
+Es la estructura estándar para capturar excepciones en tiempo de ejecución. 
 
-La Estructura Fundamental: try...catch...finally
-Este bloque se utiliza para envolver código que podría generar un error. 
-
-try: Contiene el código que se quiere ejecutar y que puede fallar.
-catch(error): Se ejecuta solo si ocurre un error en el bloque try. Recibe un objeto de error con información sobre lo sucedido.
-finally: Bloque opcional que se ejecuta siempre, haya ocurrido un error o no.   */
-
+try: Aquí se coloca el código que "podría" fallar.
+catch(error): Este bloque solo se ejecuta si ocurre un error en el try. Recibe un objeto con información sobre lo que salió mal.
+finally: (Opcional) Se ejecuta siempre, haya habido error o no.  
+*/
 
 try {
   // Código que puede fallar
-  let resultado = 10 / variableInexistente; 
-} catch (error) {
-  // Qué hacer si falla
-  console.error("Se detectó un error:", error.message);
+} catch (err) {
+  console.error("Algo salió mal:", err.message);
 } finally {
-  // Se ejecuta pase lo que pase
-  console.log("Proceso finalizado.");
+  console.log("Proceso terminado");
 }
+
+
+
+
+
+
+/*
+Truthy y Falsy
+se refieren a valores que se traducen  como true(verdadero) o false(falso) cuando se evaluan en un contexto booleano.  */
+
+/* 
+Valores Falsy
+son valores que el motor del lenguaje siempre interpreta como falsos:
+
+false 
+0, -0 y 0n (Bigint cero)
+"",'',``(cadenas de texto vacias)
+null
+undefined
+NaN(not a Number)
+
+
+Valores Truthy
+cualquier valor que no este en la lista anterior se considera verdadero.
+
+ejemplos con los que suelen confundir son:
+
+"0"(una cadena con el caracter cero)
+"false"(una cadena con texto)
+[](un array vacio)
+{}(un objeto vacio)
+cualquier numero distinto de cero(incluyendo negativos como -1)
+
+
+
+*/
+
