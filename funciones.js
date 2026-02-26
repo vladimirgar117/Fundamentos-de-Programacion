@@ -160,6 +160,9 @@ una función recuerda y puede acceder a variables de su contexto externo,
  incluso después de que esa función externa haya terminado de ejecutarse.
 */
 
+
+
+
 function saludar() {
   let mensaje = "Hola";
 
@@ -175,20 +178,143 @@ saludo(); // "Hola"
 
 
 
-//Hoisting
-//es un comportamiento donde las declaraciones se “mueven” al inicio de su contexto durante la fase de compilación.
+
+
+/*
+Hoisting
+es un comportamiento donde las declaraciones se “mueven” al inicio de su contexto durante la fase de compilación.
+
+
+Hoisting en funciones
+
+Function Declaration (se elevan completamente). */
+
+saludar();
+
+function saludar() {
+  console.log("Hola");
+}
+
+
+//Function Expression
+
+saludar();
+
+var saludar = function() {
+  console.log("Hola");
+};
 
 
 
+
+/*
+This
+es una palabra clave que hace referencia al contexto de ejecución actual.
+
+El valor de this no depende de dónde se escribe la función, sino de cómo se llama.
+
+
+
+this  en function
+
+this depende de cómo se ejecuta la función.
+
+
+si la funcion se llama sola this es el objeto global (window). */
+
+function mostrar() {
+  console.log(this);
+}
+
+mostrar();
 
 
 
 
 /*
 
+this en arrow function
+
+no tiene su propio this , heredan el this del contexto donde fueron creadas.
+
+
+const usuario = {
+  nombre: "Carlos",
+
+  saludar: function() {
+    setTimeout(() => {
+      console.log(this.nombre);
+    }, 1000);
+  }
+};
+
+usuario.saludar();
+
+
+
+
+saludar es función normal.
+
+Se llama con usuario.saludar()
+
+Entonces this dentro de saludar es usuario.
+
+La arrow hereda ese mismo this.
+
 
 
 */
+
+
+
+
+
+/*funcion flecha que retorna objetos 
+
+const crearUsuario = (nombre, edad) => ({
+  nombre: nombre,
+  edad: edad,
+  activo: true
+});
+
+console.log(crearUsuario("Carlos", 30));
+
+
+
+
+
+funcion flecha que retorna array
+
+const crearNumeros = () => [1, 2, 3, 4, 5];
+
+console.log(crearNumeros());
+
+
+
+
+
+
+funcion que retorna otra funcion
+
+const multiplicador = (factor) => {
+  return (numero) => numero * factor;
+};
+
+const duplicar = multiplicador(2);
+console.log(duplicar(10)); // 20
+
+*/
+
+
+
+
+
+
+
+
+
+
+
 
 
 
