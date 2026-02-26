@@ -306,6 +306,40 @@ console.log(duplicar(10)); // 20
 */
 
 
+/* como tener una funcion asincrona sin declarar el async
+
+
+usando promesas directamente
+
+
+function obtenerDatos() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Datos recibidos");
+    }, 1000);
+  });
+}
+
+obtenerDatos().then(data => {
+  console.log(data);
+});
+
+
+
+
+usando .then() en vez de await
+
+function obtenerDatos() {
+  return fetch("https://api.ejemplo.com/datos")
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      return data;
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
+}
 
 
 
@@ -313,6 +347,9 @@ console.log(duplicar(10)); // 20
 
 
 
+
+
+*/
 
 
 
