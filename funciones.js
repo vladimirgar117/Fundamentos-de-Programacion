@@ -157,7 +157,7 @@ async function text() {
 Funciones de Cierre (Closures)
 
 una función recuerda y puede acceder a variables de su contexto externo,
- incluso después de que esa función externa haya terminado de ejecutarse.
+incluso después de que esa función externa haya terminado de ejecutarse.
 */
 
 
@@ -166,11 +166,11 @@ una función recuerda y puede acceder a variables de su contexto externo,
 function saludar() {
   let mensaje = "Hola";
 
-  function decirHola() {
-    console.log(mensaje);
-  }
+  // function decirHola() {
+  //   console.log(mensaje);
+  // }
 
-  return decirHola;
+  // return decirHola;
 }
 
 const saludo = saludar();
@@ -235,35 +235,23 @@ mostrar();
 
 this en arrow function
 
-no tiene su propio this , heredan el this del contexto donde fueron creadas.
+no tiene su propio this , heredan el this del contexto donde fueron creadas.   */
+
 
 
 const usuario = {
   nombre: "Carlos",
 
   saludar: function() {
+    console.log(this.nombre);
     setTimeout(() => {
-      console.log(this.nombre);
     }, 1000);
   }
 };
 
-usuario.saludar();
+usuario.saludar();                
 
 
-
-
-saludar es función normal.
-
-Se llama con usuario.saludar()
-
-Entonces this dentro de saludar es usuario.
-
-La arrow hereda ese mismo this.
-
-
-
-*/
 
 
 
@@ -283,7 +271,7 @@ console.log(crearUsuario("Carlos", 30));
 
 
 
-funcion flecha que retorna array
+funcion flecha que retorna arreglo
 
 const crearNumeros = () => [1, 2, 3, 4, 5];
 
@@ -310,7 +298,7 @@ console.log(duplicar(10)); // 20
 
 
 usando promesas directamente
-
+*/
 
 function obtenerDatos() {
   return new Promise((resolve, reject) => {
@@ -323,6 +311,9 @@ function obtenerDatos() {
 obtenerDatos().then(data => {
   console.log(data);
 });
+
+//que hace resolve
+
 
 
 
@@ -341,14 +332,6 @@ function obtenerDatos() {
     });
 }
 
-
-
-
-
-
-
-
-
 */
 
 
@@ -356,7 +339,41 @@ function obtenerDatos() {
 
 
 
+/*
 
+promesas
+
+son objetos que representan la eventual finalizacion o fallo de una operacion asincrona y su resultante.
+
+
+Las promesas se declaran usando el constructor Promise.
+
+*/
+
+const miPromesa = new Promise((resolve, reject) => {
+  // Código asíncrono aquí
+
+  if (/* todo salió bien */) {
+    resolve("Éxito");
+  } else {
+    reject("Error");
+  }
+});
+
+
+/*
+
+estados de una promesa
+
+Pendiente (pending) → Estado inicial.
+
+Cumplida (fulfilled) → La operación fue exitosa.
+
+Rechazada (rejected) → La operación falló.
+
+
+
+*/
 
 
 
