@@ -312,13 +312,19 @@ obtenerDatos().then(data => {
   console.log(data);
 });
 
+
+
 //que hace resolve
 
+//resolve es la función que marca una promesa como exitosa (fulfilled).
 
 
 
 
-usando .then() en vez de await
+
+
+
+//usando .then() en vez de await
 
 function obtenerDatos() {
   return fetch("https://api.ejemplo.com/datos")
@@ -332,7 +338,7 @@ function obtenerDatos() {
     });
 }
 
-*/
+
 
 
 
@@ -377,8 +383,31 @@ Rechazada (rejected) → La operación falló.
 
 
 
+/*
+manejo de errores 
 
 
+manejo con catch
+Cuando una promesa se rechaza , se captura con .catch()
+
+
+
+
+
+
+
+/*
+
+
+
+
+
+Siempre usa .catch() o try/catch
+✔ Lanza errores con throw new Error()
+✔ No ocultes errores silenciosamente
+✔ No mezcles await con .then() innecesariamente
+✔ Usa logs centralizados en producción
+✔ Maneja errores en Promise.all() correctamente
 
 
 
