@@ -387,8 +387,7 @@ Rechazada (rejected) → La operación falló.
 manejo de errores 
 
 
-manejo con catch
-Cuando una promesa se rechaza , se captura con .catch()
+try / catch es una estructura que permite capturar y manejar errores sin que el programa se detenga.
 
 
 
