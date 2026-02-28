@@ -387,9 +387,23 @@ Rechazada (rejected) → La operación falló.
 manejo de errores 
 
 
-try / catch es una estructura que permite capturar y manejar errores sin que el programa se detenga.
+try / catch  finally
+es una estructura que permite capturar y manejar errores sin que el programa se detenga.
 
+try → Código que puede fallar.
 
+catch → Captura el error.
+
+finally → Se ejecuta siempre (opcional). 
+
+try {
+  let resultado = 10 / 0;
+  console.log(resultado);
+} catch (error) {
+  console.error("Ocurrió un error:", error.message);
+} finally {
+  console.log("Esto siempre se ejecuta");
+}
 
 
 
