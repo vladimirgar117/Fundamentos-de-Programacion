@@ -383,11 +383,14 @@ Rechazada (rejected) → La operación falló.
 
 
 
+
+
 /*
 manejo de errores 
 
+then y catch
 
-try / catch es una estructura que permite capturar y manejar errores sin que el programa se detenga.
+
 
 
 
@@ -401,12 +404,6 @@ try / catch es una estructura que permite capturar y manejar errores sin que el 
 
 
 
-Siempre usa .catch() o try/catch
-✔ Lanza errores con throw new Error()
-✔ No ocultes errores silenciosamente
-✔ No mezcles await con .then() innecesariamente
-✔ Usa logs centralizados en producción
-✔ Maneja errores en Promise.all() correctamente
 
 
 
