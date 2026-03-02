@@ -391,8 +391,26 @@ manejo de errores
 then y catch
 
 
+<<<<<<< HEAD
+=======
+try / catch  finally
+es una estructura que permite capturar y manejar errores sin que el programa se detenga.
+>>>>>>> 3c2697048883a7aa0beb8892cdd634dd6e1c5abe
 
+try → Código que puede fallar.
 
+catch → Captura el error.
+
+finally → Se ejecuta siempre (opcional). 
+
+try {
+  let resultado = 10 / 0;
+  console.log(resultado);
+} catch (error) {
+  console.error("Ocurrió un error:", error.message);
+} finally {
+  console.log("Esto siempre se ejecuta");
+}
 
 
 
