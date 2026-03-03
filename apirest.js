@@ -84,6 +84,32 @@ Cuando se hace una petición HTTP, el servidor responde con un código numérico
 
 
 
+// reglas de apirest / primer regla con protocolo https
+
+1. Uso de recursos, no acciones
+  Todo se organiza en recursos (sustantivos), no en acciones (verbos).
+
+
+GET /usuarios       → Obtener lista de usuarios
+POST /usuarios      → Crear un nuevo usuario
+PUT /usuarios/1     → Actualizar usuario con id 1
+DELETE /usuarios/1  → Eliminar usuario con id 1
+
+
+
+
+
+
+
+
+
+
+
+// status codes los mas comunes 
+
+
+
+
 Swagger:
 Es una herramienta para documentar, diseñar y probar APIs REST.
 

@@ -347,8 +347,7 @@ function obtenerDatos() {
 
 /*
 
-promesas
-
+PROMESAS:
 son objetos que representan la eventual finalizacion o fallo de una operacion asincrona y su resultante.
 
 
@@ -369,54 +368,130 @@ const miPromesa = new Promise((resolve, reject) => {
 
 /*
 
-estados de una promesa
+Estados de una promesa
 
 Pendiente (pending) → Estado inicial.
 
 Cumplida (fulfilled) → La operación fue exitosa.
 
-Rechazada (rejected) → La operación falló.
-
-
-
-*/
+Rechazada (rejected) → La operación falló.                  */
 
 
 
 
 
 /*
-manejo de errores 
+MANEJO DE ERRORES:
 
-then y catch
+manejo con catch
+
+.catch() captura:
+
+Errores lanzados con throw
+Promesas rechazadas con reject()
+Errores dentro de cualquier .then().  */
 
 
-<<<<<<< HEAD
-=======
-try / catch  finally
-es una estructura que permite capturar y manejar errores sin que el programa se detenga.
->>>>>>> 3c2697048883a7aa0beb8892cdd634dd6e1c5abe
-
-try → Código que puede fallar.
-
-catch → Captura el error.
-
-finally → Se ejecuta siempre (opcional). 
-
-try {
-  let resultado = 10 / 0;
-  console.log(resultado);
-} catch (error) {
-  console.error("Ocurrió un error:", error.message);
-} finally {
-  console.log("Esto siempre se ejecuta");
-}
+miPromesa().     //pendiente
+  .then(resultado => {
+    console.log("Éxito:", resultado);  // cumplida
+  })
+  .catch(error => {
+    console.error("Ocurrió un error:", error);    // rechazada
+  });
 
 
 
 
+// .then()   catch()   ,  finally
+//ejemplo:
 
-/*
+
+Promise.resolve(5)
+  .then(num => {
+    console.log("Primer then:", num);  
+    return num * 2;                        //primer then recibe 5 y retorna 10
+  })
+  .then(num => {
+    console.log("Segundo then:", num);
+    return num + 10;                      //segundo then recibe 10 y retorna 20 
+  })
+  .catch(error => {
+    console.log("Error:", error);          //no hay error asi que se salta catch
+  })
+  .finally(() => {                        
+    console.log("Proceso terminado");     //finally se ejecuta siempre
+  });
+
+
+
+
+// en caso de que haya un error
+
+Promise.resolve(5)
+  .then(num => {                             //se ejecuta el primer then
+    console.log("Primer then:", num);
+    throw new Error("Algo falló");        // se lanza throw 
+  })
+  .then(num => {
+    console.log("Segundo then:", num); // la promesa se vuelve rechazada y se salta el segundo then 
+  })
+  .catch(error => {
+    console.log("Error capturado:", error.message); //se ejecuta catch
+  })
+  .finally(() => {
+    console.log("Proceso terminado"); // se ejecuta finally
+  });
+
+
+
+
+
+
+
+
+
+// then , catch , then 
+// ejemplo:
+
+
+const promesa = new Promise((resolve, reject) => {
+  const numero = 5;
+
+  if (numero > 10) {
+    resolve("Número mayor que 10");
+  } else {
+    reject("Número menor o igual a 10");      //  La promesa compara numero = 5 con 10 , pasa a ser rechazada.
+  }
+});
+
+promesa
+  .then(resultado => {
+    console.log("Primer then:", resultado); 
+  })
+  .catch(error => {                          //Se ejecuta el catch , devuelve  "Valor por defecto"
+    console.log("Catch:", error);
+    
+    return "Valor por defecto";    // Se puede devolver un valor para continuar la cadena.
+  })
+  .then(resultado => {                            // Ese valor pasa al siguiente then
+    console.log("Segundo then:", resultado);      // el segundo then imprime "Segundo then: Valor por defecto".
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
