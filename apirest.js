@@ -52,6 +52,7 @@ REST usa los verbos HTTP para definir la acción.
 Status Codes (Códigos de estado):
 Cuando se hace una petición HTTP, el servidor responde con un código numérico.
 
+status codes los mas comunes 
 
 2xx → Éxito:
 
@@ -79,6 +80,136 @@ Cuando se hace una petición HTTP, el servidor responde con un código numérico
 | 500    | Internal Server Error |
 | 502    | Bad Gateway           |
 | 503    | Service Unavailable   |
+
+
+
+
+
+
+
+// reglas de apirest 
+1. Arquitectura Cliente–Servidor
+
+El cliente  hace las solicitudes.
+El servidor procesa y responde.
+Ambos son independientes.
+
+
+2. Stateless (Sin estado)
+
+Cada petición debe contener toda la información necesaria.
+El servidor no guarda estado del cliente entre peticiones.
+
+
+
+3. Uso correcto de los métodos HTTP
+
+| Método | Uso                         |
+| ------ | --------------------------- |
+| GET    | Obtener datos               |
+| POST   | Crear recurso               |
+| PUT    | Actualizar recurso completo |
+| PATCH  | Actualizar parcialmente     |
+| DELETE | Eliminar recurso            |
+
+
+
+4. Recursos identificados por URL
+
+Los recursos deben representarse con sustantivos, no verbos.
+
+Ejemplo:
+
+GET /usuarios
+GET /usuarios/10
+POST /usuarios
+
+
+
+5. Representaciones
+Normalmente se usa JSON.
+
+Se especifica con:
+
+Content-Type: application/json
+
+
+6.Uso correcto de códigos de estado HTTP
+
+| Código | Significado   |
+| ------ | ------------- |
+| 200    | OK            |
+| 201    | Created       |
+| 204    | No Content    |
+| 400    | Bad Request   |
+| 401    | Unauthorized  |
+| 403    | Forbidden     |
+| 404    | Not Found     |
+| 500    | Error interno |
+
+
+
+
+7. Interfaz uniforme
+
+Debe existir coherencia en:
+
+Estructura de URLs
+Formato de respuestas
+Manejo de errores
+
+{
+  "error": "Usuario no encontrado",
+  "code": 404
+}
+
+
+
+8. Cacheable
+
+Las respuestas deben indicar si pueden cachearse:
+
+Cache-Control: max-age=3600
+
+
+9. Versionado
+
+Es buena práctica versionar la API:
+
+Ejemplo:
+
+/api/v1/usuarios
+/api/v2/usuarios
+
+
+10. HATEOAS (Opcional en REST puro)
+
+El servidor puede incluir enlaces relacionados dentro de la respuesta.
+
+Ejemplo:
+
+{
+  "id": 10,
+  "nombre": "Juan",
+  "links": {
+    "self": "/usuarios/10",
+    "pedidos": "/usuarios/10/pedidos"
+  }
+}
+
+
+
+
+
+
+
+primer regla con protocolo https
+
+no cambia la arquitectura pero se mejora la seguridad de la comunicación.
+
+
+
+
 
 
 
