@@ -471,7 +471,7 @@ promesa
   })
   .catch(error => {                          //Se ejecuta el catch , devuelve  "Valor por defecto"
     console.log("Catch:", error);
-    
+   
     return "Valor por defecto";    // Se puede devolver un valor para continuar la cadena.
   })
   .then(resultado => {                            // Ese valor pasa al siguiente then
@@ -479,8 +479,11 @@ promesa
   });
 
 
+  //todo: como evitar que el segundo then se ejecute.
 
-
+// se puede lanzar el error con throw 
+// devolver la promesa rechazada con el reject
+// manejar el error al final con catch
 
 
 
